@@ -1,0 +1,7 @@
+{
+  "name": "MarketNest",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
