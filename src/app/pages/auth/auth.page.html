@@ -1,8 +1,8 @@
 <app-header title="Auth"></app-header>
 <ion-content>
-    
+
 <div class="d-flex-center">
-        
+
     <form  [formGroup]="form" class="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
 
 
@@ -20,7 +20,7 @@
         </div>
 
 
-    
+
         <app-custom-input
         icon="lock-closed-outline"
         [control]="form.controls.password"
@@ -35,7 +35,29 @@
         <ion-button class="submit" expand="block" mode="ios" [disabled]="form.invalid">
             Ingresar
         </ion-button>
-   
+
+         <!-- Enlace al formulario de registro -->
+         <ion-button
+         class="register-link"
+         expand="block"
+         color="secondary"
+         fill="clear"
+         [routerLink]="'/register'"
+       >
+         ¿No tienes cuenta? Regístrate
+       </ion-button>
+
+           <!-- Enlace al formulario de registro -->
+           <ion-button
+           class="forgot-password-link"
+           expand="block"
+           color="secondary"
+           fill="clear"
+           [routerLink]="'/forgot-password'"
+         >
+           ¿Olvidaste tu contraseña? Haz clic aquí
+         </ion-button>
+
     </form>
 </div>
 </ion-content>

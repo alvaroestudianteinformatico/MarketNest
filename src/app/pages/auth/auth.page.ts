@@ -16,6 +16,7 @@ export class AuthPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.form.value);
   }
 
   submit(){

@@ -138,35 +138,35 @@ ion-button {
     --ion-color-secondary: #03dac6;
     --ion-color-secondary-contrast: #000000;
     --ion-color-tertiary: #3700b3;
-  
+
     ion-content {
       background-color: var(--ion-background-color);
       color: var(--ion-text-color);
     }
-  
+
     /* Personaliza otros componentes */
     ion-header,
     ion-toolbar {
       background-color: #1f1f1f;
       color: var(--ion-text-color);
     }
-  
+
     ion-button {
       --background: var(--ion-color-primary);
       color: var(--ion-text-color);
     }
-  
+
     /* Ajusta tus estilos personalizados */
     .custom-input {
       --border-color: #444;
     }
   }
-  
+
   /* Estilos Globales */
   ion-button {
     text-transform: none;
   }
-  
+
   .safe-p-bottom {
     padding-bottom: constant(safe-area-inset-bottom); // para iOS 13+
     padding-bottom: env(safe-area-inset-bottom); // versiones anteriores de iOS
