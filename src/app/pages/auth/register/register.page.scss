@@ -1,15 +1,25 @@
-ion-header {
-  --background: #3880ff;
+/* Asegura que ion-content ocupe toda la altura */
+ion-content {
+  --padding-top: 0; /* Quita el padding superior para aprovechar toda la altura disponible */
+  --padding-bottom: 0; /* Quita el padding inferior para aprovechar toda la altura disponible */
+
+  display: flex;
+  justify-content: center;  /* Centra horizontalmente */
+  align-items: center;      /* Centra verticalmente */
+  height: 100%;             /* Asegura que el contenido ocupe toda la altura de la pantalla */
 }
 
-ion-title {
-  color: black;
-}
-
-form {
+/* Estilo para el formulario */
+.auth-form {
+  width: 90%;               /* El formulario ocupará el 90% del ancho */
+  max-width: 500px;         /* El formulario no será más ancho de 500px */
   padding: 20px;
+  background-color: white; /* Fondo blanco para el formulario */
+  border-radius: 10px;     /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera para el formulario */
 }
 
+/* Asegura que los botones ocupen el 100% del ancho */
 ion-button {
-  margin-top: 20px;
+  width: 100%;
 }

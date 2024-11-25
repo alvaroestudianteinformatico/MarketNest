@@ -1,63 +1,128 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>Registrar</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<ion-content class="d-flex-center">
+
+  <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()">
+
+    <!-- Tipo de Usuario -->
+    <ion-item>
+      <ion-label>Tipo de Usuario</ion-label>
+      <ion-select formControlName="userType" placeholder="Selecciona un tipo de usuario">
+        <ion-select-option value="cliente">Cliente</ion-select-option>
+        <ion-select-option value="vendedor">Vendedor</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="validators" *ngIf="form.get('userType')?.errors && form.get('userType')?.touched">
+      <div *ngIf="form.get('userType')?.errors?.['required']">El tipo de usuario es requerido</div>
+    </div>
+
     <!-- Nombre Completo -->
     <ion-item>
       <ion-label position="floating">Nombre Completo</ion-label>
-      <ion-input formControlName="fullName" required></ion-input>
+      <ion-input formControlName="fullName" type="text"></ion-input>
     </ion-item>
-    <div *ngIf="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched">
-      <p *ngIf="registerForm.get('fullName')?.hasError('required')">El nombre completo es requerido.</p>
-      <p *ngIf="registerForm.get('fullName')?.hasError('minlength')">Debe tener al menos 3 caracteres.</p>
+    <div class="validators" *ngIf="form.get('fullName')?.errors && form.get('fullName')?.touched">
+      <div *ngIf="form.get('fullName')?.errors?.['required']">El nombre es requerido</div>
+      <div *ngIf="form.get('fullName')?.errors?.['minlength']">Debe tener al menos 3 caracteres</div>
     </div>
 
-    <!-- Apellidos-->
+    <!-- Apellidos -->
     <ion-item>
       <ion-label position="floating">Apellidos</ion-label>
-      <ion-input formControlName="fullLastName" required></ion-input>
+      <ion-input formControlName="fullLastName" type="text"></ion-input>
     </ion-item>
-    <div *ngIf="registerForm.get('fullLastName')?.invalid && registerForm.get('fullLastName')?.touched">
-      <p *ngIf="registerForm.get('fullLastName')?.hasError('required')">El Apellido es requerido.</p>
-      <p *ngIf="registerForm.get('fullLastName')?.hasError('minlength')">Debe tener al menos 6 caracteres.</p>
+    <div class="validators" *ngIf="form.get('fullLastName')?.errors && form.get('fullLastName')?.touched">
+      <div *ngIf="form.get('fullLastName')?.errors?.['required']">Los apellidos son requeridos</div>
+      <div *ngIf="form.get('fullLastName')?.errors?.['minlength']">Debe tener al menos 6 caracteres</div>
+    </div>
+
+    <!-- Genero -->
+    <ion-item>
+      <ion-label>Género</ion-label>
+      <ion-select formControlName="gender" placeholder="Selecciona tu género">
+        <ion-select-option value="masculino">Masculino</ion-select-option>
+        <ion-select-option value="femenino">Femenino</ion-select-option>
+        <ion-select-option value="otro">Otro</ion-select-option>
+        <ion-select-option value="no_decirlo">Prefiero no decirlo</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="validators" *ngIf="form.get('gender')?.errors && form.get('gender')?.touched">
+      <div *ngIf="form.get('gender')?.errors?.['required']">El género es requerido</div>
+    </div>
+
+    <!-- Pais de Residencia -->
+    <ion-item>
+      <ion-label>País</ion-label>
+      <ion-select formControlName="country" placeholder="Selecciona tu país">
+        <ion-select-option value="chile">Chile</ion-select-option>
+        <ion-select-option value="argentina">Argentina</ion-select-option>
+        <ion-select-option value="mexico">México</ion-select-option>
+        <ion-select-option value="espana">España</ion-select-option>
+        <ion-select-option value="otro">Otro</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="validators" *ngIf="form.get('country')?.errors && form.get('country')?.touched">
+      <div *ngIf="form.get('country')?.errors?.['required']">El país es requerido</div>
+    </div>
+
+    <!-- Estado Civil -->
+    <ion-item>
+      <ion-label>Estado Civil</ion-label>
+      <ion-select formControlName="maritalStatus" placeholder="Selecciona tu estado civil">
+        <ion-select-option value="soltero">Soltero/a</ion-select-option>
+        <ion-select-option value="casado">Casado/a</ion-select-option>
+        <ion-select-option value="divorciado">Divorciado/a</ion-select-option>
+        <ion-select-option value="viudo">Viudo/a</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="validators" *ngIf="form.get('maritalStatus')?.errors && form.get('maritalStatus')?.touched">
+      <div *ngIf="form.get('maritalStatus')?.errors?.['required']">El estado civil es requerido</div>
     </div>
 
     <!-- Correo Electrónico -->
     <ion-item>
-      <ion-label position="floating">Correo Electrónico</ion-label>
-      <ion-input formControlName="email" type="email" required></ion-input>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
     </ion-item>
-    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
-      <p *ngIf="registerForm.get('email')?.hasError('required')">El correo es requerido.</p>
-      <p *ngIf="registerForm.get('email')?.hasError('email')">El correo no es válido.</p>
+    <div class="validators" *ngIf="form.get('email')?.errors && form.get('email')?.touched">
+      <div *ngIf="form.get('email')?.errors?.['required']">El correo es requerido</div>
+      <div *ngIf="form.get('email')?.errors?.['email']">Ingrese un correo válido</div>
     </div>
 
     <!-- Contraseña -->
     <ion-item>
       <ion-label position="floating">Contraseña</ion-label>
-      <ion-input formControlName="password" type="password" required></ion-input>
+      <ion-input formControlName="password" type="password"></ion-input>
     </ion-item>
-    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
-      <p *ngIf="registerForm.get('password')?.hasError('required')">La contraseña es requerida.</p>
-      <p *ngIf="registerForm.get('password')?.hasError('minlength')">Debe tener al menos 6 caracteres.</p>
+    <div class="validators" *ngIf="form.get('password')?.errors && form.get('password')?.touched">
+      <div *ngIf="form.get('password')?.errors?.['required']">La contraseña es requerida</div>
+      <div *ngIf="form.get('password')?.errors?.['minlength']">Debe tener al menos 6 caracteres</div>
     </div>
 
-    <!-- Número de telefono -->
+    <!-- Número de Teléfono -->
     <ion-item>
-      <ion-label position="floating">Número de Telefono</ion-label>
-      <ion-input formControlName="Número de télefono" type="number" required></ion-input>
+      <ion-label position="floating">Número de Teléfono (+Código de Área)</ion-label>
+      <ion-input formControlName="phoneNumber" type="tel"></ion-input>
     </ion-item>
-    <div *ngIf="registerForm.get('number')?.invalid && registerForm.get('number')?.touched">
-      <p *ngIf="registerForm.get('number')?.hasError('required')">El número es requerido.</p>
-      <p *ngIf="registerForm.get('number')?.hasError('minlength')">Debe tener al menos 8 caracteres.</p>
+    <div class="validators" *ngIf="form.get('phoneNumber')?.errors && form.get('phoneNumber')?.touched">
+      <div *ngIf="form.get('phoneNumber')?.errors?.['required']">El número es requerido</div>
+      <div *ngIf="form.get('phoneNumber')?.errors?.['pattern']">Debe ser un número válido con el formato +123456789</div>
     </div>
 
-     <!-- Botón de Envío -->
-    <ion-button expand="full" type="submit" [disabled]="registerForm.invalid">Registrarse</ion-button>
+    <!-- Botón de Registro -->
+    <ion-button class="submit" expand="block" [disabled]="form.invalid">
+      Registrarse
+    </ion-button>
+
+    <!-- Enlace al formulario de inicio de sesión -->
+    <ion-button class="login-link" expand="block" color="secondary" fill="clear" [routerLink]="'/auth'">
+      ¿Ya tienes cuenta? Inicia sesión
+    </ion-button>
+
   </form>
 
 </ion-content>
